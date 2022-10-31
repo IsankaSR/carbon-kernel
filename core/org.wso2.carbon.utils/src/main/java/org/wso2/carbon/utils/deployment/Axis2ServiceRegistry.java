@@ -223,7 +223,7 @@ public class Axis2ServiceRegistry {
                         ServiceGroupBuilder groupBuilder =
                                 new ServiceGroupBuilder(rootElement, wsdlServicesMap,
                                         configCtx);
-                        ArrayList<? extends AxisService> serviceList = groupBuilder.populateServiceGroup(serviceGroup);
+                        ArrayList<AxisService> serviceList = groupBuilder.populateServiceGroup(serviceGroup);
                         DeploymentEngine.addServiceGroup(serviceGroup,
                                 serviceList,
                                 null,

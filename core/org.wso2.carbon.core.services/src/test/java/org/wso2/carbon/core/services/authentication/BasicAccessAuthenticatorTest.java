@@ -21,7 +21,7 @@ package org.wso2.carbon.core.services.authentication;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.apache.axis2.context.MessageContext;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 
 /**
  * Test class for Basic access authenticator.

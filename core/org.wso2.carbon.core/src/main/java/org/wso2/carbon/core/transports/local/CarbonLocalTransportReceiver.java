@@ -21,7 +21,7 @@ import org.apache.axis2.context.ConfigurationContext;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.context.SessionContext;
 import org.apache.axis2.description.TransportInDescription;
-import org.apache.axis2.transport.TransportListener;
+import org.apache.axis2.kernel.TransportListener;
 import org.apache.axis2.transport.local.LocalTransportReceiver;
 import org.apache.axis2.transport.local.LocalTransportSender;
 import org.wso2.carbon.utils.ServerConstants;
@@ -33,15 +33,15 @@ public class CarbonLocalTransportReceiver extends LocalTransportReceiver impleme
 
     public CarbonLocalTransportReceiver(){
         //This constructor will only be invoked by Axis2 when it is initializing transports.
-        super(null, false);
+        super((ConfigurationContext) null);
     }
 
     public CarbonLocalTransportReceiver(LocalTransportSender sender, boolean nonBlocking) {
-        super(sender, nonBlocking);
+        super(sender);
     }
 
     public CarbonLocalTransportReceiver(ConfigurationContext configurationContext, boolean nonBlocking) {
-        super(nonBlocking, configurationContext);
+        super(configurationContext);
     }
     
     public void init(ConfigurationContext configurationContext, TransportInDescription transprtIn) throws AxisFault {

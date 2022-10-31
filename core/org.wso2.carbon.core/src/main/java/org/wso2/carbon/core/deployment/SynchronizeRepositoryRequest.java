@@ -27,6 +27,7 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.core.multitenancy.utils.TenantAxisUtils;
 import org.wso2.carbon.utils.multitenancy.MultitenantConstants;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -80,7 +81,7 @@ public class SynchronizeRepositoryRequest extends ClusteringMessage {
         return "SynchronizeRepositoryRequest{" +
                "tenantId=" + tenantId +
                ", tenantDomain='" + tenantDomain + '\'' +
-               ", messageId=" + getUuid() +
+               ", messageId=" + UUID.randomUUID() +
                '}';
     }
 

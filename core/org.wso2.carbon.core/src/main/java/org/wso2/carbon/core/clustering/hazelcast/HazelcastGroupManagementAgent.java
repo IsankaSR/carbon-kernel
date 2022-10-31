@@ -144,7 +144,7 @@ public class HazelcastGroupManagementAgent implements GroupManagementAgent {
         this.subDomain = subDomain;
     }
 
-    @Override
+
     public void setGroupMgtPort(int groupMgtPort) {
         this.groupMgtPort = groupMgtPort;
     }

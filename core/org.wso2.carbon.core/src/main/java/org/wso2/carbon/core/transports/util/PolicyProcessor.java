@@ -19,9 +19,11 @@ package org.wso2.carbon.core.transports.util;
 import org.apache.axis2.context.ConfigurationContext;
 import org.apache.axis2.description.AxisService;
 import org.apache.axis2.description.PolicyInclude;
+import org.apache.axis2.description.PolicySubject;
 import org.apache.axis2.util.ExternalPolicySerializer;
 import org.apache.http.protocol.HTTP;
 import org.apache.neethi.Policy;
+import org.apache.neethi.PolicyComponent;
 import org.apache.neethi.PolicyReference;
 import org.apache.neethi.PolicyRegistry;
 import org.wso2.carbon.base.api.ServerConfigurationService;
@@ -29,13 +31,13 @@ import org.wso2.carbon.core.internal.CarbonCoreDataHolder;
 import org.wso2.carbon.core.transports.CarbonHttpRequest;
 import org.wso2.carbon.core.transports.CarbonHttpResponse;
 import org.wso2.carbon.core.transports.HttpGetRequestProcessor;
-import org.wso2.carbon.core.util.SystemFilter;
 import org.wso2.carbon.utils.CarbonUtils;
 import org.wso2.carbon.utils.NetworkUtils;
 import org.wso2.carbon.utils.deployment.GhostDeployerUtils;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -65,6 +67,7 @@ public class PolicyProcessor implements HttpGetRequestProcessor {
                 outputStream.flush();
             } else {
                 PolicyInclude policyInclude = axisService.getPolicyInclude();
+                PolicySubject policySubject = axisService.getPolicySubject();
                 if (policyInclude == null) {
                     response.addHeader(HTTP.CONTENT_TYPE, "text/html");
                     outputStream.write("<h4>Policy element is not found!</h4>".getBytes());
@@ -72,7 +75,8 @@ public class PolicyProcessor implements HttpGetRequestProcessor {
                     return;
 
                 }
-                ArrayList policyElements = policyInclude.getPolicyElements();
+                //ArrayList policyElements = policyInclude.getPolicyElements();
+                ArrayList policyElements = (ArrayList) policySubject.getAttachedPolicyComponents();
 
                 if (policyElements == null) {
                     response.addHeader(HTTP.CONTENT_TYPE, "text/html");

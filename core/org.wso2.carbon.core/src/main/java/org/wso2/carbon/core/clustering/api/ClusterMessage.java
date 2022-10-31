@@ -17,7 +17,7 @@
 */
 package org.wso2.carbon.core.clustering.api;
 
-import org.apache.axis2.util.UUIDGenerator;
+import org.apache.axiom.om.util.UUIDGenerator;
 
 import java.io.Serializable;
 

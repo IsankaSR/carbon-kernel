@@ -298,6 +298,11 @@ public class HazelcastClusteringAgent extends ParameterAdapter implements Cluste
         log.info("Cluster initialization completed");
     }
 
+    @Override
+    public void finalize() {
+
+    }
+
     /**
      * Generates the node ID for the cluster node.
      *
@@ -738,16 +743,14 @@ public class HazelcastClusteringAgent extends ParameterAdapter implements Cluste
         addGroupManagementAgent(agent, applicationDomain, null);
     }
 
-    @Override
     public void addGroupManagementAgent(GroupManagementAgent groupManagementAgent,
                                         String applicationDomain,
                                         String applicationSubDomain,
                                         int groupMgtPort) {
         addGroupManagementAgent(groupManagementAgent, applicationDomain, applicationSubDomain);
-        groupManagementAgent.setGroupMgtPort(groupMgtPort);
     }
 
-    @Override
+
     public void resetGroupManagementAgent(String applicationDomain,
                                           String applicationSubDomain) {
         if (groupManagementAgents.containsKey(applicationDomain) &&
@@ -767,9 +770,9 @@ public class HazelcastClusteringAgent extends ParameterAdapter implements Cluste
             }
 
             if (agent instanceof DefaultGroupManagementAgent) {
-                MembershipManager manager = ((DefaultGroupManagementAgent) agent).getMembershipManager();
+                //MembershipManager manager = ((DefaultGroupManagementAgent) agent).getMembershipManager();
                 // remove members from membership manager
-                manager.removeAllMembers();
+                //manager.removeAllMembers();
                 if (log.isDebugEnabled()) {
                     log.debug("Remove all members of Membership Manager of group management agent of cluster domain " +
                               applicationDomain + " and sub domain " + applicationSubDomain);
@@ -791,8 +794,8 @@ public class HazelcastClusteringAgent extends ParameterAdapter implements Cluste
         if (!groupManagementAgents.containsKey(applicationDomain)) {
             groupManagementAgents.put(applicationDomain, new HashMap<String, GroupManagementAgent>());
         }
-        agent.setDomain(applicationDomain);
-        agent.setSubDomain(applicationSubDomain);
+//        agent.setDomain(applicationDomain);
+//        agent.setSubDomain(applicationSubDomain);
         groupManagementAgents.get(applicationDomain).put(applicationSubDomain, agent);
         clusterManagementMode = true;
     }
@@ -891,7 +894,7 @@ public class HazelcastClusteringAgent extends ParameterAdapter implements Cluste
             // Cleanup sent messages buffer
             int messagesProcessed = 0;
             for (ClusteringMessage clusteringMessage : sentMsgsBuffer) {
-                if (System.currentTimeMillis() - clusteringMessage.getTimestamp() >= MAX_MESSAGE_LIFETIME) {
+                if (System.currentTimeMillis() - System.currentTimeMillis() >= MAX_MESSAGE_LIFETIME) {
                     sentMsgsBuffer.remove(clusteringMessage);
                 }
 

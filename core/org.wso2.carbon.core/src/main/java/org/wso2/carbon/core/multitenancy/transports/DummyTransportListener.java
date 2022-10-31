@@ -21,7 +21,7 @@ import org.apache.axis2.context.ConfigurationContext;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.context.SessionContext;
 import org.apache.axis2.description.TransportInDescription;
-import org.apache.axis2.transport.TransportListener;
+import org.apache.axis2.kernel.TransportListener;
 import org.wso2.carbon.utils.SessionContextUtil;
 
 /**
@@ -50,17 +50,20 @@ public class DummyTransportListener implements TransportListener {
         // Nothing to implement
     }
 
-    public EndpointReference getEPRForService(String serviceName,
+    // need to remove this method
+    public EndpointReference[] getEPRForService(String serviceName,
                                               String ip) throws AxisFault {
         String fullyQualifiedServiceName = "t/" + tenant + "/" + serviceName;
-        EndpointReference epr =
-                mainTransportListener.getEPRForService(fullyQualifiedServiceName, ip);
-        return epr;
+        EndpointReference[] eprs =
+                mainTransportListener.getEPRsForService(fullyQualifiedServiceName, ip);
+        return eprs;
     }
 
     public EndpointReference[] getEPRsForService(String serviceName,
                                                  String ip) throws AxisFault {
-        EndpointReference[] eprs = new EndpointReference[]{getEPRForService(serviceName, ip)};
+        String fullyQualifiedServiceName = "t/" + tenant + "/" + serviceName;
+        EndpointReference[] eprs =
+                mainTransportListener.getEPRsForService(fullyQualifiedServiceName, ip);
         return eprs;
     }
 

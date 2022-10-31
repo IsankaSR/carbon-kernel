@@ -27,8 +27,7 @@ import org.apache.axis2.description.Parameter;
 import org.apache.axis2.description.TransportInDescription;
 import org.apache.axis2.engine.AxisConfiguration;
 import org.apache.axis2.engine.ListenerManager;
-import org.apache.axis2.transport.base.threads.ThreadCleanupContainer;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.apache.commons.collections.BidiMap;
 import org.apache.commons.collections.bidimap.TreeBidiMap;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
@@ -51,7 +50,6 @@ import org.wso2.carbon.base.CarbonContextHolderBase;
 import org.wso2.carbon.base.api.ServerConfigurationService;
 import org.wso2.carbon.core.CarbonAxisConfigurator;
 import org.wso2.carbon.core.CarbonConfigurationContextFactory;
-import org.wso2.carbon.core.CarbonThreadCleanup;
 import org.wso2.carbon.core.CarbonThreadFactory;
 import org.wso2.carbon.core.RegistryResources;
 import org.wso2.carbon.core.ServerInitializer;
@@ -116,7 +114,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import static org.apache.axis2.transport.TransportListener.HOST_ADDRESS;
+import static org.apache.axis2.kernel.TransportListener.HOST_ADDRESS;
 
 /**
  * This class is responsible for managing the WSO2 Carbon server core. Handles server starting,
@@ -326,8 +324,6 @@ public final class CarbonServerManager implements Controllable {
             if (log.isDebugEnabled()) {
                 log.debug("Starting Carbon initialization...");
             }
-
-            ThreadCleanupContainer.addThreadCleanup(new CarbonThreadCleanup());
 
             // Location for expanding web content within AAR files
             String webLocation = System.getProperty(CarbonConstants.WEB_RESOURCE_LOCATION);
@@ -805,7 +801,8 @@ public final class CarbonServerManager implements Controllable {
             ClusteringAgent clusteringAgent =
                     serverConfigContext.getAxisConfiguration().getClusteringAgent();
             if (clusteringAgent != null) {
-                clusteringAgent.stop();
+                // todo:
+               // clusteringAgent.stop();
             }
             if (!CarbonUtils.isRunningInStandaloneMode()) {
                 long waitFor = 5;

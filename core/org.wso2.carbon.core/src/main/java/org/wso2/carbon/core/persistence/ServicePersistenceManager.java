@@ -1080,7 +1080,7 @@ public class ServicePersistenceManager extends AbstractPersistenceManager {
         String serviceXPath = PersistenceUtils.getResourcePath(axisService);
 
         // Get Service Policy
-        List<PolicyComponent> servicePolicyList = new ArrayList<PolicyComponent>(axisService
+        Collection<PolicyComponent> servicePolicyList = new ArrayList<PolicyComponent>(axisService
                 .getPolicySubject().getAttachedPolicyComponents());
         Policy servicePolicy = PolicyUtil.getMergedPolicy(servicePolicyList, axisService);
 

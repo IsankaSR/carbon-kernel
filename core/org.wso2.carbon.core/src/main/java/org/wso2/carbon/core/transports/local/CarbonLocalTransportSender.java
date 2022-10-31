@@ -16,7 +16,7 @@
 package org.wso2.carbon.core.transports.local;
 
 import org.apache.axis2.transport.local.LocalTransportSender;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.AxisFault;
 import org.wso2.carbon.base.ServletRequestHolder;
@@ -37,7 +37,7 @@ public class CarbonLocalTransportSender extends LocalTransportSender {
 //                    new CarbonLocalTransportReceiver(this, isNonBlocking());
             CarbonLocalTransportReceiver localTransportReceiver =
                     new CarbonLocalTransportReceiver(msgContext.getConfigurationContext(),
-                                                     isNonBlocking());
+                                                     true);
             //set the servlet requests here
             msgContext.setProperty(HTTPConstants.MC_HTTP_SERVLETREQUEST,
                     ServletRequestHolder.getServletRequest());

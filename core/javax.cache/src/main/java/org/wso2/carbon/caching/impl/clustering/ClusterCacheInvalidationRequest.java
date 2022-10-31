@@ -45,6 +45,7 @@ public class ClusterCacheInvalidationRequest extends ClusteringMessage {
 
     private static final transient Log log = LogFactory.getLog(ClusterCacheInvalidationRequest.class);
     private static final long serialVersionUID = 94L;
+    private final String uuid = java.util.UUID.randomUUID().toString();
 
     private CacheInfo cacheInfo;
     private String tenantDomain;
@@ -90,7 +91,7 @@ public class ClusterCacheInvalidationRequest extends ClusteringMessage {
         return "ClusterCacheInvalidationRequest{" +
                 "tenantId=" + tenantId +
                 ", tenantDomain='" + tenantDomain + '\'' +
-                ", messageId=" + getUuid() +
+                ", messageId=" + uuid +
                 ", cacheManager=" + cacheInfo.cacheManagerName +
                 ", cache=" + cacheInfo.cacheName +
                 ", cacheKey=" +cacheInfo.cacheKey +

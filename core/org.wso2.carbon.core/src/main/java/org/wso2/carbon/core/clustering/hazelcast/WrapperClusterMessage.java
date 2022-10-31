@@ -24,6 +24,8 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.core.clustering.api.ClusterMessage;
 import org.wso2.carbon.core.internal.CarbonCoreDataHolder;
 
+import java.util.UUID;
+
 /**
  * TODO: class description
  */
@@ -34,7 +36,7 @@ public class WrapperClusterMessage extends ClusterMessage {
 
     public WrapperClusterMessage(ClusteringMessage axis2ClusteringMessage) {
         this.axis2ClusteringMessage = axis2ClusteringMessage;
-        setUuid(axis2ClusteringMessage.getUuid());
+        setUuid(UUID.randomUUID().toString());
     }
 
     @Override

@@ -31,8 +31,8 @@ import org.apache.axis2.description.ParameterInclude;
 import org.apache.axis2.description.TransportInDescription;
 import org.apache.axis2.description.TransportOutDescription;
 import org.apache.axis2.i18n.Messages;
-import org.apache.axis2.transport.TransportListener;
-import org.apache.axis2.transport.TransportSender;
+import org.apache.axis2.kernel.TransportListener;
+import org.apache.axis2.kernel.TransportSender;
 import org.wso2.carbon.base.CarbonBaseUtils;
 import org.wso2.carbon.core.transports.util.TransportParameter;
 

@@ -17,7 +17,7 @@
 */
 package org.wso2.carbon.user.core.system;
 
-import org.apache.axis2.util.Base64;
+import org.apache.axiom.om.util.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.utils.Secret;

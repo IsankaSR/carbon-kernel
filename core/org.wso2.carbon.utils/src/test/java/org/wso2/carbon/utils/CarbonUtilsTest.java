@@ -30,7 +30,7 @@ import org.apache.axis2.deployment.ServiceDeployer;
 import org.apache.axis2.description.AxisService;
 import org.apache.axis2.description.Parameter;
 import org.apache.axis2.engine.AxisConfiguration;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.apache.commons.httpclient.Header;
 import org.mockito.Mockito;
 import org.testng.Assert;

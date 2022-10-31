@@ -25,7 +25,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 
 import org.apache.axis2.client.ServiceClient;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.apache.commons.httpclient.Header;
 
 public class CarbonUIAuthenticationUtil {

@@ -26,7 +26,7 @@ import org.apache.axis2.context.SessionContext;
 import org.apache.axis2.deployment.DeploymentConstants;
 import org.apache.axis2.description.Parameter;
 import org.apache.axis2.description.TransportInDescription;
-import org.apache.axis2.transport.TransportListener;
+import org.apache.axis2.kernel.TransportListener;
 import org.apache.axis2.transport.base.ManagementSupport;
 import org.apache.axis2.transport.base.MetricsCollector;
 import org.apache.commons.logging.Log;

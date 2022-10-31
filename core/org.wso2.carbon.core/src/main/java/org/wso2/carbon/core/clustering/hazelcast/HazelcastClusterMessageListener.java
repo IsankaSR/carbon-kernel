@@ -27,6 +27,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * TODO: class description
@@ -52,7 +53,7 @@ public class HazelcastClusterMessageListener implements MessageListener<Clusteri
             if (!sentMsgsBuffer.contains(msg)) { // Ignore own messages
                 log.info("Received ClusteringMessage: " + msg);
                 msg.execute(configurationContext);
-                recdMsgsBuffer.put(msg.getUuid(), System.currentTimeMillis());
+                recdMsgsBuffer.put(UUID.randomUUID().toString(), System.currentTimeMillis());
             }
         } catch (ClusteringFault e) {
             log.error("Cannot process ClusteringMessage", e);

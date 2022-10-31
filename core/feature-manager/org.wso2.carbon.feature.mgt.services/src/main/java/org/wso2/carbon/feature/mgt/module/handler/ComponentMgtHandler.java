@@ -18,7 +18,7 @@ package org.wso2.carbon.feature.mgt.module.handler;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.handlers.AbstractHandler;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.wso2.carbon.feature.mgt.services.CompMgtConstants;
 
 import javax.servlet.http.HttpServletRequest;

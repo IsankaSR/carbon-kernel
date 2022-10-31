@@ -40,8 +40,8 @@ import org.apache.axis2.dispatchers.RequestURIOperationDispatcher;
 import org.apache.axis2.engine.AxisEngine;
 import org.apache.axis2.engine.Handler;
 import org.apache.axis2.engine.MessageReceiver;
-import org.apache.axis2.transport.RequestResponseTransport;
-import org.apache.axis2.transport.http.HTTPConstants;
+import org.apache.axis2.kernel.RequestResponseTransport;
+import org.apache.axis2.kernel.http.HTTPConstants;
 import org.apache.axis2.util.MessageContextBuilder;
 import org.apache.axis2.util.Utils;
 import org.apache.axis2.wsdl.WSDLConstants;
@@ -588,7 +588,7 @@ public class MultitenantMessageReceiver implements MessageReceiver {
             	this.processRESTRequest(tenantInMsgCtx,os,contentType);
             } else if (httpMethod.equals(Constants.Configuration.HTTP_METHOD_POST) ||
                     httpMethod.equals(Constants.Configuration.HTTP_METHOD_PUT) ||
-                    httpMethod.equals(Constants.Configuration.HTTP_METHOD_PATCH)) {
+                    httpMethod.equals("PATCH")) {
                 //RESTUtil.processXMLRequest(tenantInMsgCtx, in, os, contentType);
             	this.processRESTRequest(tenantInMsgCtx,os,contentType);
             } else {
